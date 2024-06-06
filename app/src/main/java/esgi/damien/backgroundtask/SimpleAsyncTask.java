@@ -1,6 +1,7 @@
 package esgi.damien.backgroundtask;
 
 import android.os.AsyncTask;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
@@ -9,7 +10,7 @@ import java.util.Random;
 public class SimpleAsyncTask extends AsyncTask<Void, Void, String> {
     private WeakReference<TextView> mTextView;
 
-    SimpleAsyncTask(TextView tv) {
+    SimpleAsyncTask(TextView tv, ProgressBar mProgressBar) {
         mTextView = new WeakReference<>(tv);
     }
 

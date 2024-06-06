@@ -1,6 +1,7 @@
 package esgi.damien.backgroundtask;
 
 import android.os.Bundle;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.view.View;
 
@@ -16,11 +17,14 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TEXT_STATE = "currentText";
 
+    private ProgressBar mProgressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mTextView = findViewById(R.id.textView1);
+        mProgressBar = findViewById(R.id.progressBar);
 
         // Vérifie si l'état a été enregistré
         if(savedInstanceState!=null){
@@ -37,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
     public void startTask(View view) {
         // Placer un message dans la vue texte
         mTextView.setText(R.string.napping);
+
+        // Montre une barre de progression et change pour indiquer que le travail est en cours
+        mProgressBar.setVisibility(View.VISIBLE);
+
         // Démarre l'AsyncTask.
         new SimpleAsyncTask(mTextView).execute();
     }
